@@ -32,14 +32,15 @@ h = [1, 0.7, 0.7, 0];
 rKey = filter(h, 1, key); % this line does the same as the comment before
 
 %%%%%%%%%%% DISTORTION DU SIGNAL, SUITE : ON APPLIQUE LA FONCTION SIGNE
-pKey = zeros(size(rKey));
-for k = 1:length(pKey)
-    pKey(k) = sign(rKey(k));
-    if pKey(k) == 0
-        pKey(k) = -1;
-    end
-end
-rKey = pKey;
+%%%%% NE PAS FAIRE CE PARAGRAPHE !!! J'AVAIS MAL COMPRIS LA DONNÉE !!!
+%pKey = zeros(size(rKey));
+%for k = 1:length(pKey)
+%    pKey(k) = sign(rKey(k));
+%    if pKey(k) == 0
+%        pKey(k) = -1;
+%    end
+%end
+%rKey = pKey;
 
 
 
