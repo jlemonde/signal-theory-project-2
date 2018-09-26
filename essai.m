@@ -9,44 +9,14 @@ clear;
 
 
 
-
-
-
-%%%%%%%%%%% ENCODAGE DE L'IMAGE
-pic = imread('kth.jpg');
-[key, cPic] = encoder(pic);
-
-
-
-
-%%%%%%%%%%% DISTORTION DU SIGNAL : CONVOLUTION
-h = [1, 0.7, 0.7, 0];
-% rKey = zeros(size(key));
-% for k = 1:length(key)
-%     for l = 0:3
-%         if k-l >= 1
-%             rKey(k) = rKey(k) + h(l+1)*key(k-l);
-%         end
-%     end
-% end
-rKey = filter(h, 1, key); % this line does the same as the comment before
-
-%%%%%%%%%%% DISTORTION DU SIGNAL, SUITE : ON APPLIQUE LA FONCTION SIGNE
-%%%%% NE PAS FAIRE CE PARAGRAPHE !!! J'AVAIS MAL COMPRIS LA DONNÉE !!!
-%pKey = zeros(size(rKey));
-%for k = 1:length(pKey)
-%    pKey(k) = sign(rKey(k));
-%    if pKey(k) == 0
-%        pKey(k) = -1;
-%    end
-%end
-%rKey = pKey;
-
-
+load("spydata.mat");
+load("training.mat");
+rKey = received;
+key = training;
 
 %%%%%%%%%%% RECONSTRUCTION DU SIGNAL : EQUALISER.
 % PARAMÈTRES
-L = 5; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
+L = 7; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
 N = 32;
 % CONSTRUCTION DE LA MATRICE R
 R = zeros(N-L, L+1);
@@ -78,12 +48,12 @@ for k = L+1:length(rKey)
      end
 end
 
-errCheck = (eKey-key)/2;
-MSE = 0;
-for i = 1:N %length(errCheck)        % we only know key from 1 to N !!!!
-   MSE = MSE + errCheck(i)^2;
-end
-MSE;
+% errCheck = (eKey-key)/2;
+% MSE = 0;
+% for i = 1:N %length(errCheck)        % we only know key from 1 to N !!!!
+%    MSE = MSE + errCheck(i)^2;
+% end
+% MSE;
 
 
 % return
