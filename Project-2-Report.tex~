@@ -1,0 +1,228 @@
+\documentclass[twocolumn, 12pt]{IEEEtran}
+
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{balance}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Project Assignment 1: Report}
+\author{Johannes Lemonde 960911-T357 and Peter Ramstromer Pello 910101-1550}
+
+\maketitle
+
+\section{Introduction}
+This project is organised as seven tasks, some of them being theoretical questions, and the further more practical questions involving data sets to compute and to discuss. 
+
+The first three tasks, about the Gaussian distribution, beg for instance to compute the empirical distributions of differently sized data sets (task 1), to comment on the impact of the correlation coefficient on the joint probability density function (task 2) and to derive a conditional distribution function.
+
+The following four tasks are about system models with Gaussian noise. Using a periodogram on the provided data sets, we are asked to comment on the accuracy of the recovery of sinusoidal frequencies in both cases where there is white noise (task 4) and non-white noise (task 5). Task 6 and 7 are about finding autocorrelation functions and power spectra in the case of an discrete-time autoregressive signal model.
+
+This report answers in order to the tasks in the assignment's booklet.
+%In this section, a general description of the problem under consideration is provided. 
+%As soon as the reader completes reading the introduction, (s)he should be aware of what 
+%will be discussed in the main body and the possible contributions, e.g., how the problem 
+%is solved. It is suggested to briefly describe, in words, the structure of the report 
+%and how it is organized. The report could be single or double column.
+
+\section{Problem Formulation and Solution}
+%This section contains the analytical presentation of the problem and the solution steps. 
+%It could be organized in many different subsections, depending on the structure of the 
+%problem itself (one central problem or several small tasks) and the author's personal 
+%choice of presentation.
+
+   \subsection{Task 1}\label{subsec:task1}
+   By applying following formulae on the data, 
+      \begin{equation}\label{eq:t1-mean-eq}
+         m_{X_{i}}=\frac{1}{N_{i}} \sum_{n=1}^{N_{i}}x_{n}^{(i)}
+      \end{equation}
+      \begin{equation}\label{eq:t1-var-eq}
+         Var(X_{i})=\frac{1}{N_{i}-1} \sum_{n=1}^{N_{i}}(x_{n}^{(i)}-m_{X_{i}})^2
+      \end{equation}
+      
+   we get the following results:
+   \begin{center}
+      \begin{tabular}{|c|c|c|}
+         \hline
+         \(N_{1}=10\) & \(m_{X_{1}}=1.3829\) & \(Var(X_{1})=6.2650\) \\
+         \hline
+         \(N_{2}=100\) & \(m_{X_{2}}=0.6135\) & \(Var(X_{2})=2.1931\) \\
+         \hline
+         \(N_{3}=1000\) & \(m_{X_{3}}=0.4408\) & \(Var(X_{3})=1.9615\) \\
+         \hline
+      \end{tabular}
+   \end{center}
+   
+   For the empirical distribution, Matlab's command \texttt{cdfplot} gives us figure~\ref{fig:task1}. This command computes the proportion of values lower or equal to $x$.
+   \begin{figure}[h]
+      \begin{center}
+         \includegraphics[width=.6\linewidth]{t1--.png}
+      \end{center}
+   \vspace{-0.6cm}
+   \caption{Task 1}
+   \label{fig:task1}
+   \end{figure}
+   We can observe clearly that the higher the sequence length \(N_{i}\) is, the better the curve follows the theoretical cdf for the normal distribution. From the mean and variance values also, we seem to observe that \(N~\rightarrow~\infty \Rightarrow (m_{X}~\rightarrow~\mu~=~0.5~and~Var(X) \rightarrow~\sigma^2=2)\).
+
+   \subsection{Task 2}\label{subsec:task2}
+      The general equation of the joint Gaussian distribution function \(f_{XY}^{(i)}\) is (\(\Sigma\) being the matrix of covariance and \(\overrightarrow{\mu}\) the mean vector; see \cite{Wiki1} in the bibliographic index):
+      \begin{equation}\label{eq:t2-gaussian-eq}
+         f_{\overrightarrow{X}}(\overrightarrow{x}) = \frac{exp(-\frac{1}{2}(\overrightarrow{x}-\overrightarrow{\mu})^{T}\Sigma^{-1}(\overrightarrow{x}-\overrightarrow{\mu}))}{\sqrt{(2\pi)^k |\Sigma|}}
+      \end{equation}
+      In order to see this equation derived for two variables, see equation (\ref{eq:t3-gaussian}).
+      
+      On the data, we rather use \( f^{(i)}_{XY}(x, y) = P(X_{i}~=~x, Y_{i}~=~y) \) but given the fact that we only have a discrete amount of outcomes \((x_{i}, y_{i})_{n}\), we cannot use it directly. Instead, we make an approximation and determine, for every coordinates \((x, y)\in\mathbb{R}\) how many outcomes of \((X_{i}, Y_{i})\) are near to the considered point. To do so, for algorithmic complexity reasons, we apply a grid on the plane \(Oxy\) and count the amount of outcomes \((x, y)_{n}\) for every cell. Then we normalise the result so that the double integral over the hole domain gives 1, and plot it (figure \ref{fig:task2}). 
+      Matlab's command \texttt{ksdensity} works similarly.
+      \begin{figure}[h]
+         \begin{center}
+            \includegraphics[width=.5\linewidth]{t2-s1-.png} 
+            \nolinebreak 
+            \includegraphics[width=.5\linewidth]{t2-s2-.png}
+         \end{center}
+      \vspace{-0.6cm}
+      \caption{Task 2 : \(f_{XY}(x, y)\) for \(\rho_{1} = 0.25\) and \(\rho_{2} = 0.75\) respectively.}
+      \label{fig:task2}
+      \end{figure}
+      We see clearly that the right hand side distribution (\(s_{2}\)) has more correlated X and Y random variables than the left one (\(s_{1}\)) as the shape seems to follow the plan \(x=y\) whereas the other one has a more circular shape. If \(f_{XY}\) was characterised by \(-\rho_{i}\) rather than by \(\rho_{i}\), we would expect the shape to be orientated in the other direction: \(x=-y\), especially in the case where $\rho=-0.75$ while $\rho=-0.25$ would result in a quite circular shape, again. Hence, the more $|\rho|$ tends to $1$, the more the shape is orientated, and the more $|\rho|$ tends to 0, the more it is circular (not orientated).
+   \subsection{Task 3}
+   %The first part of the problem along with its solution goes here. It is suggested to number 
+   %any equations that will be referenced later in text.
+   %\begin{equation} \label{eq:Eq1}
+   %y(n)=x(n)+z(n)
+   %\end{equation}
+   %The above equation is referred to as Eq.~\eqref{eq:Eq1} or \eqref{eq:Eq1}, anywhere the text. 
+      For two variables (X and Y), from (\ref{eq:t2-gaussian-eq}) we get:
+      \begin{equation}\label{eq:t3-gaussian}
+         f_{XY}(x, y) = \frac{exp(\frac{-  ( \frac{(x-\mu_{X})^2}{\sigma_{X}^2} + \frac{(y-\mu_{Y})^2}{\sigma_{Y}^2} - \frac{2\rho(x-\mu_{X})(y-\mu_{Y})}{\sigma_{X}\sigma_{Y}} )  }{2(1-\rho^2)})}{2\pi\sigma_{X}\sigma_{Y}\sqrt{1-\rho^2}}
+      \end{equation}
+      
+      Moreover, we have that:
+      \begin{equation}\label{eq:t3-fy}
+         f_{Y}(y) = \frac{exp(- \frac{(y-\mu_{Y})^2}{2\sigma_{Y}^2})}{\sqrt{2\pi\sigma_{Y}^2}}
+      \end{equation}
+      which gives us (with $\mu_X=\mu_Z \text{~and~} \sigma_X=\sigma_Z$)
+      \begin{equation}\label{eq:t3-fz}
+         f_{Z=X|(Y=y)}(z) = {\frac{f_{XY}(x, y)}{f_{Y}(y)}} | _{x=z} = 
+         %\frac{1}{\sqrt{2\pi}\sigma_X}\frac{1}{\sqrt{1-\rho^2}}exp[ \frac{(x-\mu_X)^2}{-2(1-\rho^2)\sigma_X^2} + \frac{\rho^2(y-\mu_Y)^2}{-2(1-\rho^2)\sigma_Y^2} + \frac{2\rho(x-\mu_X)(y-\mu_Y)}{-\sigma_X\sigma_Y} ]
+      \end{equation}
+      \begin{equation}
+         = \frac{  exp[ \frac{-(z-\mu_X)^2}{2(1-\rho^2)\sigma_X^2} + \frac{-\rho^2(y-\mu_Y)^2}{2(1-\rho^2)\sigma_Y^2} + \frac{\rho(z-\mu_X)(y-\mu_Y)}{(1-\rho^2)\sigma_X\sigma_Y} ]  }{\sqrt{1-\rho^2} \sqrt{2\pi}\sigma_X}
+      \end{equation}
+      
+      Then, for \(f_{X+Y}\) and \(f_{X-Y}\) we use that a sum of normal distributed random variables also follows the normal law, and we simply compute the new mean and variance values:
+      \begin{equation}\label{eq:t3-mean}
+         m_{X+Y} = m_{X}+m_{Y}~\text{and}~m_{X-Y} = m_{X}-m_{Y}
+      \end{equation}
+      \begin{equation}\label{eq:t3-var1}
+         \sigma_{X+Y}^2 = \sigma_{X}^2 + \sigma_{Y}^2 + 2 \rho \sqrt{\sigma_{X}^2 \sigma_{Y}^2}
+      \end{equation}
+      \begin{equation}\label{eq:t3-var2}
+         \sigma_{X-Y}^2 = \sigma_{X}^2 + \sigma_{Y}^2 - 2 \rho \sqrt{\sigma_{X}^2 \sigma_{Y}^2}
+      \end{equation}
+      Then we insert these results in the normal probability density function (such as (\ref{eq:t3-fy})) and the result is:
+      \begin{equation}\label{eq:t3-fxpy}
+         f_{Z=X+Y}(z) = \frac{exp(- \frac{(z-(m_{X}+m_{Y}))^2}{2 (\sigma_{X}^2 + \sigma_{Y}^2 + 2 \rho \sqrt{\sigma_{X}^2 \sigma_{Y}^2})})}{\sqrt{2\pi (\sigma_{X}^2 + \sigma_{Y}^2 + 2 \rho \sqrt{\sigma_{X}^2 \sigma_{Y}^2})}}
+      \end{equation}
+      \begin{equation}\label{eq:t3-fxmy}
+         f_{Z=X-Y}(z) = \frac{exp(- \frac{(z-(m_{X}-m_{Y}))^2}{2 (\sigma_{X}^2 + \sigma_{Y}^2 - 2 \rho \sqrt{\sigma_{X}^2 \sigma_{Y}^2})})}{\sqrt{2\pi(\sigma_{X}^2 + \sigma_{Y}^2 - 2 \rho \sqrt{\sigma_{X}^2 \sigma_{Y}^2})}}
+      \end{equation}
+      
+
+   \subsection{Task 4}
+      For tasks 4 and 5, we plot the data sets using Matlab's command \texttt{periodogram}, which is basically the Fourier transform of an estimate of the autocorrelation function.
+      
+      We see in figure \ref{fig:task4} that two frequencies seem clearly to be present in the set (\(y_2\)), and these are the frequencies we were looking for: \(\nu_0 = 0.05\) and \(\nu_1 = 0.25\) (rounded up).
+      Hence we conclude that \(y_2\) (in red) corresponds to the outcome \(H_1\), and \(y_1\) (in blue) corresponds to \(H_0\). 
+      \begin{figure}[h]
+         \begin{center}
+            \includegraphics[width=.8\linewidth]{t4--.png}
+         \end{center}
+      \vspace{-0.6cm}
+      \caption{Task 4: Periodogram of \(y_1\) and \(y_2\) as a function of \(\nu\).}
+      \label{fig:task4}
+      \end{figure}
+      The precision of the recovered frequencies is quite good, but not perfect. Indeed, the amount of points in each data set is not large enough, which gives an imprecision on the frequencies.
+      Without rounding up, we measure \(\nu_0 = 0.05078\) and \(\nu_1 = 0.25000\).
+      
+   \subsection{Task 5}
+      Unlike the behaviour in figure \ref{fig:task4} where the white noise keeps a similar power over all frequencies, in this case -- figure \ref{fig:task5} -- the coloured noise has power values depending on the frequency, with higher power for lower frequencies.
+      \begin{figure}[h]
+         \begin{center}
+            \includegraphics[width=.8\linewidth]{t5--.png}
+         \end{center}
+      \vspace{-0.6cm}
+      \caption{Task 5: Periodogram of \(y\) as a function of \(\nu\).}
+      \label{fig:task5}
+      \end{figure}
+       As the frequency augments, there is no issue recovering a sinusoidal frequency: \(\nu_1 = 0.25\) in our case. But when it comes to \(\nu_0\), it is harder to tell since it could be noise... Moreover, there are other frequencies near to \(\nu_0\), produced by noise, which power values on the periodogram are even greater, which could be mistaken to be actual sinusoids! Here we have a peak near \(\nu = 0.0039\) for instance.
+       
+   \subsection{Task 6}
+      In order to find the power spectrum of \(x_1(n)\), we start by deriving the expression of its autocorrelation function: \({r_{X_1}(k)} = {\mathbb{E}\{X_1(n-k) X_1(n)\}} = {\mathbb{E}\{X_1(n-k) (\alpha X(n-1) + Z(n))\}} = {\mathbb{E}\{\alpha~ X_1(n-1) X_1(n-k) + \underbrace{Z(n) X_1(n-k)}_{\text{Independent}}\}} = {\alpha ~ r_{X_1}(k-1) + \underbrace{\mathbb{E}\{Z(n)\}}_{=0} \mathbb{E}\{X_1(n-k)\}} = {\alpha ~ r_{X_1}(k-1)} \). This is a geometric progression.
+      But since it is a recursive definition, we need first of all a starting point for its definition:
+      \(r_{X_1}(0) = {\mathbb{E}\{X_1(n) X_1(n)\}} = {\mathbb{E}\{\alpha^2 (X_1(n-1))^2 + \underbrace{2 \alpha X_1(n-1) Z(n)}_{\text{Independent; }\mathbb{E}\{Z(n)\}=0} + (Z(n))^2\}}\\ = {\alpha^2~r_{X_1}(0)} + \sigma_z^2\) 
+      \(\Leftrightarrow {r_{X_1}(0) = \frac{\sigma_z^2}{1-\alpha^2}} \Leftrightarrow {r_{X_1}(k) = \frac{\sigma_z^2}{1-\alpha^2}~\alpha^{|k|}}\). The absolute value around $k$ is due to the fact that the autocorrelation function must be symmetrical.
+      
+      Now the power spectrum is given by the discrete-time Fourier transform: 
+      \({R_{X_1}(\nu)} = {\mathcal{F}_d(r_{X_1}(k))(\nu)} \stackrel{\text{Look up table}}{=}  {\frac{\sigma_z^2}{1-\alpha^2} ~\frac{1 - \alpha^2}{1+\alpha^2-2\alpha cos(2\pi\nu)}} = {\frac{\sigma_z^2}{1+\alpha^2-2\alpha cos(2\pi\nu)}}\), under the condition that \(|\alpha|<1\).
+      
+      For the power spectrum of \(x_2(n)\), we use that we have \(x_2(n) = {h(n)*x_1(n)}={\sum\limits_{k=-\infty}^{+\infty}h(k)x_1(n-k)}\), which lets us use a theorem from the course's text book \cite{HanOttHjalm} (page 150): \(R_{X_2}(\nu) = |H(\nu)|^2 R_{X_1}(\nu)\). So we have \(H(\nu) = {\mathcal{F}_d(h(n))(\nu)} = {\mathcal{F}_d(\beta^n u(n))(\nu)} \stackrel{\text{Look up table}}{=} \frac{1}{1-\beta e^{-j2\pi\nu}}\), under the assumption that \(|\beta| < 1\), which gives us \(R_{X_2}(\nu) = {\frac{1}{1+\beta^2-2\beta cos(2\pi\nu)}~{\frac{\sigma_z^2}{1+\alpha^2-2\alpha cos(2\pi\nu)}}}\).
+      \begin{figure}[h]
+         \begin{center}
+            \includegraphics[width=.8\linewidth]{t6--.png}
+         \end{center}
+         \vspace{-0.6cm}
+         \caption{Task 6: Power spectra of $x_1(n)$ and $x_2(n)$ over a period.}
+         \label{fig:task6}
+      \end{figure}
+      
+   \subsection{Task 7}
+   
+%      From the same theorem in \cite{HanOttHjalm}, page 150, and under the same assumptions for $\alpha$ and $\beta$ as previously, we get that the autocorrelation function of \(x_2(n)\) must be \(r_{X_2}(k) = {\sum\limits_{l=-\infty}^{+\infty}\sum\limits_{p=-\infty}^{+\infty}h(l)~h(p)~r_{X_1}(k+p-l)} \Leftrightarrow r_{X_2}(k)~=~{\sum\limits_{l=0}^{+\infty}\sum\limits_{p=0}^{\infty}\beta^{l+p}~\frac{\sigma_z^2}{1-\alpha^2}~\alpha^{|k+p-l|}}\).
+      \begin{figure}[h]
+         \begin{center}
+            \includegraphics[width=\linewidth]{t7--.png}
+         \end{center}
+         \vspace{-0.6cm}
+         \caption{Task 7: Autocorrelation function of $x_2$}
+         \label{fig:task7}
+      \end{figure}
+
+      From last equation, if we set $\alpha=\beta=0.25$ and $\sigma_z=1$, we get $R_{X_2}(\nu)=R_{X_1}(\nu) R_{X_1}(\nu) \Leftrightarrow r_{X_2}(k)={r_{X_1}(k)*r_{X_1}(k)}={\sum\limits_{i=-\infty}^{+\infty}r_{X_1}(i)~r_{X_1}(k-i)} = {\sum\limits_{i=-\infty}^{+\infty}\frac{\alpha^{|i|+|k-i|}}{(1-\alpha^2)^2}}$ which implies $(1-\alpha^2)^2~r_{X_2}(k) = {\sum\limits_{i=-\infty}^{0}\alpha^{-i+|k-i|}+\sum\limits_{i=0}^{+\infty}\alpha^{i+|k-i|}-\alpha^{|k|}}$. Now since $r_{X_2}(k)$ is an even function, we are allowed to restrict ourselves to $k \geq 0$, which gives $(1-\alpha^2)^2~r_{X_2}(k) = {\sum\limits_{i=-\infty}^{0}\alpha^{-2i+k} + \sum\limits_{i=0}^{k-1}\alpha^k + \sum\limits_{i=k}^{+\infty}\alpha^{2i-k}-\alpha^k} \stackrel{j=-i}{=}  {\alpha^k\sum\limits_{j=0}^{+\infty}(\alpha^2)^j+k\alpha^k+\alpha^{-k}\sum\limits_{i=k}^{+\infty}(\alpha^2)^i - \alpha^k}={(k-1)\alpha^k+\frac{\alpha^k}{1-\alpha^2}+\frac{\alpha^{-k}\alpha^{2k}}{1-\alpha^2}} = {(\frac{2}{1-\alpha^2}+k-1)\alpha^k}$. Thus, for any integer $k$, we get:\\ $r_{X_2}(k)=\frac{1}{(1-0.25^2)^2}(\frac{2}{1-0.25^2}+|k|-1)0.25^{|k|}\approx {1.1378(|k|+1.1333)0.25^{|k|}}$, with $r_{X_2}(0) \approx 1.2895$.
+
+
+%The report continues with the second part, and so on until the whole problem has been 
+%addressed and solved. If someone wants to refer, at some point, to external material 
+%then proper citation and referencing is needed, e.g., the coursebook in signal theory 
+%\cite{HanOttHjalm}. Figures and images are placed at the top/bottom of the page to 
+%avoid interrupting the text flow. In the text we refer to a figure as Figure~\ref{fig:Fig1} 
+%or Fig.~\ref{fig:Fig1}. Remember to be consistent with your references, i.e., do not 
+%use both Fig. and Figure in your text. The same holds for referencing equations.
+
+%\begin{figure}[t]
+%\begin{center}
+%\includegraphics[trim=1.8cm 5.1cm 2.8cm 4.9cm, clip=true, totalheight=0.2\textheight,width=0.45\textwidth]{Sinusoid.pdf}
+%\end{center}
+%\vspace{-0.4cm}
+%\caption {Sample figure.}
+%\label{fig:Fig1}
+%\end{figure}
+\section{Conclusion}
+With this project, we have discussed concepts such as distribution functions, periodograms and power spectra, and autocorrelation functions, all in the case of the Gaussian distribution. This distribution is very commonly used to describe real-world phenomena due to the central limit theorem, which states that under certain assumptions the sum of independent random variables, normalised, converges towards the Gaussian distribution, even if these random variables were themselves not following it. According to this, paying attention to the concept of Gaussian noise makes sense: it can indeed be seen as a superposition of countless unforeseeable phenomena of nature, which are happening all the time, everywhere. 
+%A summary of the findings is provided here. It is also good to highlight the most important 
+%parts of the solution and briefly discuss some implications, e.g., in real-world applications,
+%or extensions deserving further investigation.
+
+\begin{thebibliography}{1}
+
+\bibitem{HanOttHjalm}
+P. Handel, R. Ottoson, H. Hjalmarsson, \emph{Signal Theory}, KTH, 2012
+\bibitem{Wiki1}
+Wikipedia: https://en.wikipedia.org/wiki/Multivariate\_normal\_distribution
+
+\end{thebibliography}
+
+\balance
+
+\end{document}

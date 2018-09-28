@@ -19,16 +19,16 @@ pic = imread('bond.jpg');
 
 
 %%%%%%%%%%% DISTORTION DU SIGNAL : CONVOLUTION
-h = [1, 0.7, 0.7, 0];
-% rKey = zeros(size(key));
-% for k = 1:length(key)
-%     for l = 0:3
-%         if k-l >= 1
-%             rKey(k) = rKey(k) + h(l+1)*key(k-l);
-%         end
-%     end
-% end
-rKey = filter(h, 1, key); % this line does the same as the comment before
+h = [1, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6];
+rKey = zeros(size(key));
+for k = 1:length(key)
+    for l = 0:3
+        if k-l >= 1
+            rKey(k) = rKey(k) + h(l+1)*key(k-l) + normrnd(0, 0.12);
+        end
+    end
+end
+%rKey = filter(h, 1, key); % this line does the same as the comment before
 
 %%%%%%%%%%% DISTORTION DU SIGNAL, SUITE : ON APPLIQUE LA FONCTION SIGNE
 %%%%% NE PAS FAIRE CE PARAGRAPHE !!! J'AVAIS MAL COMPRIS LA DONNÉE !!!
@@ -45,7 +45,7 @@ rKey = filter(h, 1, key); % this line does the same as the comment before
 
 %%%%%%%%%%% RECONSTRUCTION DU SIGNAL : EQUALISER.
 % PARAMÈTRES
-L = 5; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
+L = 12; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
 N = 32;
 % CONSTRUCTION DE LA MATRICE R
 R = zeros(N-L, L+1);

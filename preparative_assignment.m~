@@ -13,7 +13,7 @@ clear;
 
 
 %%%%%%%%%%% ENCODAGE DE L'IMAGE
-pic = imread('bond.jpg');
+pic = imread('kth.jpg');
 [key, cPic] = encoder(pic);
 
 
@@ -63,10 +63,10 @@ end
 w = R\b;
 % EXTRAPOLATION DES RÉSULTATS OBTENUS SUR LES VALEURS SUIVANTES DE rKey
 eKey = zeros(size(rKey));
-for k = 1:N % on pourrait aussi aller jusqu'à N, car on les connaît
+for k = 1:L % on pourrait aussi aller jusqu'à N, car on les connaît
    eKey(k) = key(k); 
 end
-for k = N+1:length(rKey)
+for k = L+1:length(rKey)
     for i = 1:L+1
         eKey(k) = eKey(k) + w(i)*rKey(k-i+1);
     end
@@ -85,18 +85,14 @@ end
 MSE;
 
 
-                                                                            % PERMET DE RAJOUTER DES ERREURS À key POUR DES ESSAIS
-                                                                            nombre_d_erreurs_a_inserer = 0;
-                                                                            j = randperm(length(eKey), nombre_d_erreurs_a_inserer); 
-                                                                            for i = 1:length(j)
-                                                                               eKey(j(i)) = eKey(j(i)) * (-1);
-                                                                            end
+% return
+
 
 
 %%%%%%%%%%% DÉCODAGE DE L'IMAGE ET AFFICHAGE DE CELLE-CI
 dPic = decoder(eKey, cPic);
 image(dPic);
-axis square;
+return;
 
 
 

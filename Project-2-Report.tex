@@ -1,0 +1,95 @@
+\documentclass[twocolumn, 12pt]{IEEEtran}
+
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage{amsfonts,amsmath,amssymb,amsthm,bm,relsize}
+\usepackage{balance}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Project Assignment 2: Report}
+\author{Johannes Lemonde 960911-T357 and Lucas Streit 970606-T???}
+mettre le numéro personnel de Lucas
+
+\maketitle
+
+\section{Introduction}
+
+The main concern of this project is to decode a signal which was distorted by an unknown time-invariant finite impulse response filter and which includes also some white noise. Such filters are commonly used by communication channels; our role here is to take a glimpse into the maths behind the receptor -- in other words, to elaborate the algorithm able to decode this distorted signal back to the original signal.
+
+We are provided with such a distorted signal consisting of a large sequence of real numbers, knowing that the original binary signal --~before it was distorted~-- starts with a given binary sequence, which we also know.
+
+The knowledge of this sequence at the beginning of the signal is needed by the receptor to compute a set of constant parameters, comparing the original and distorted signals --~through a system of linear equations to solve~--, which would then be used to determine the further bits of the original signal.
+
+To make this project fancier, we are dived into a situation where the original signal is a key to decipher a picture. We are given an encrypted picture and the ciphering/deciphering algorithms, and the better the recovered key, the more accurate the deciphered picture.
+
+\section{Formalisation of the problem}
+
+ The original binary signal -- the key -- is composed by a sequence ${b(k)\in \{-1,1\}}, ~~{k\in[1, M]\subset~\mathbb{N}}$, where $M$ is the length of the key.
+ The values ${b(1),~\dots~, b(N)}$ --~referred to as the training sequence~-- are known to us, with ${N=32}$.
+ Before it was transmitted, the key has been subjected to an unknown filter $h$ of order ${3}$ and to the white noise $n(k)$ such as 
+ \begin{equation}\label{eq:r}
+ { r(k) = \sum\limits_{l=0}^{3}h(l)~b(k-l)~+n(k),~~k\in[1,M]\subset\mathbb{N} }.
+ \end{equation}
+ These values of $r$ are known to us, and we are asked to reconstruct the sequence $b$.
+ 
+ \section{Resolution}
+ 
+ In order to do so, we apply an equalizer (an other filter) of order $L$ such as 
+ \begin{equation}\label{eq:bt}
+ { \hat{b}_{r}(k) = \sum\limits_{l=0}^{L}w(l)~r(k-l) \approx b(k) },
+ \end{equation}
+ where the coefficients ${w(0)},~{\dots~},{w(L+1)}$ must be initialised using the training sequence. To do so, we define a matrix $\bm{R}$, a vector $\bm{w}$ and a vector $\bm{b}$ so that $\bm{Rw}=\bm{b}$ represent the equations in (\ref{eq:bt}). Since $r(k)$ does not have values for $k$ being null or negative, and since we have this subtraction of $l$ in the argument of $r$ in (\ref{eq:bt}), we can only use (\ref{eq:bt}) for $k = L+1,~\dots~, N$, which thus gives $\bm{Rw}=\bm{b} \Leftrightarrow $
+\begin{equation}\label{eq:matrixes}
+\begin{pmatrix}
+    \mathsmaller{r(L+1)}   & \mathsmaller{r(L)} & \mathsmaller{\cdots}  & \mathsmaller{r(1)} \\
+    \mathsmaller{r(L+2)}   & \mathsmaller{r(L+1)} & \mathsmaller{\cdots}  & \mathsmaller{r(2)} \\
+    \mathsmaller{\vdots}   & \mathsmaller{\vdots} & \mathsmaller{\cdots} & \mathsmaller{\vdots} \\
+    \mathsmaller{r(k)}     & \mathsmaller{r(k+1)} & \mathsmaller{\cdots} & \mathsmaller{r(k-L)} \\
+    \mathsmaller{\vdots}   & \mathsmaller{\vdots} & \mathsmaller{\cdots} & \mathsmaller{\vdots} \\
+    \mathsmaller{r(N)} & \mathsmaller{r(N-1)} & \mathsmaller{\cdots}  & \mathsmaller{r(N-L)}
+%   a & b
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+   \mathsmaller{w(0)}\\
+   \mathsmaller{w(1)}\\
+   \mathsmaller{\vdots}\\
+   \mathsmaller{w(L)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+   \mathsmaller{b(L+1)}\\
+   \mathsmaller{b(L+2)}\\
+   \mathsmaller{\vdots}\\
+   \mathsmaller{b(k)}\\
+   \mathsmaller{\vdots}\\
+   \mathsmaller{b(N)}
+\end{pmatrix}
+\end{equation}
+
+Notice that $\bm{R}$ is not square for any value of $L$, so the system might have much more equations than unknowns. Thus, resolving the system for $\bm{w}$ results in resolving it in the approximation of the least squares: $\bm{w} \approx (\bm{R}^{T}\bm{R})^{-1}\bm{R}^{T}~\bm{b}$. Matlab does this automatically for non-square matrices with the command \texttt{w~=~R\textbackslash b}.
+
+Once these coefficients $\bm{w}$ are computed, we can freely use the equation (\ref{eq:bt}) to get the estimated values $\hat{b}_{r}(k)$ of the whole signal (for $k \leq N$, and especially for $k \leq L$, we use the known training sequence directly, instead), but we still need to convert them to a binary sequence. In order to do so, we apply a sign detector on the real-valued estimator of $b$, which gives: $\hat{b}(k) = sign(\hat{b}_{r}(k)) = \{_{-1,~\hat{b}_{r}(k) \leq 0}^{+1,~\hat{b}_{r}(k) > 0}$.
+
+\section{Optimisation of the equaliser's order $L$}
+We have now everything needed to reconstruct the key, excepted from $L$. [[[[\#\#\#\#\#\#\#As the accuracy of the recovering of the key will depend on the choice made for the order of the equaliser, we have to \#\#\#\#\#\#\#\#]]]]
+%using L so that R is almost square
+%advantages and disadvantages of a  big  L
+%advantages and disadvantages of a small L 
+
+
+
+
+
+\begin{thebibliography}{1}
+
+\bibitem{HanOttHjalm}
+P. Handel, R. Ottoson, H. Hjalmarsson, \emph{Signal Theory}, KTH, 2012
+
+\end{thebibliography}
+
+\balance
+
+\end{document}
