@@ -19,12 +19,12 @@ pic = imread('bond.jpg');
 
 
 %%%%%%%%%%% DISTORTION DU SIGNAL : CONVOLUTION
-h = [1, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6];
+h = [1, 0.7, 0.7, 0];
 rKey = zeros(size(key));
 for k = 1:length(key)
     for l = 0:3
         if k-l >= 1
-            rKey(k) = rKey(k) + h(l+1)*key(k-l) + normrnd(0, 0.12);
+            rKey(k) = rKey(k) + h(l+1)*key(k-l) + normrnd(0, 0.05);
         end
     end
 end
@@ -45,7 +45,7 @@ end
 
 %%%%%%%%%%% RECONSTRUCTION DU SIGNAL : EQUALISER.
 % PARAMÈTRES
-L = 12; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
+L = 15; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
 N = 32;
 % CONSTRUCTION DE LA MATRICE R
 R = zeros(N-L, L+1);
