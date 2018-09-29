@@ -14,6 +14,7 @@ load("training.mat");
 rKey = received;
 key = training;
 
+
 %%%%%%%%%%% RECONSTRUCTION DU SIGNAL : EQUALISER.
 % PARAMÈTRES
 L = 12; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
@@ -25,6 +26,7 @@ for ligne = 1:N-L
         R(ligne, colonne) = rKey(L+ligne-colonne+1);
     end
 end
+[RB,p] = rref(R);
 % CONSTRUCTION DU VECTEUR D'ENTRAINEMENT (CELUI QUI EST CONNU)
 b = zeros(N-L, 1);
 for colonne = 1:N-L
@@ -67,17 +69,19 @@ end
 % return
 
 
-%                                                                             % PERMET DE RAJOUTER DES ERREURS À key POUR DES ESSAIS
-%                                                                             nombre_d_erreurs_a_inserer = 1;
-%                                                                             j = randperm(length(eKey), nombre_d_erreurs_a_inserer); 
-%                                                                             for i = 1:length(j)
-%                                                                                eKey(j(i)) = eKey(j(i)) * (-1);
-%                                                                             end
+                                                                            % PERMET DE RAJOUTER DES ERREURS À key POUR DES ESSAIS
+                                                                            nombre_d_erreurs_a_inserer = 100;
+                                                                            j = randperm(length(eKey), nombre_d_erreurs_a_inserer); 
+                                                                            for i = 1:length(j)
+                                                                               eKey(j(i)) = eKey(j(i)) * (-1);
+                                                                            end
 
 
 %%%%%%%%%%% DÉCODAGE DE L'IMAGE ET AFFICHAGE DE CELLE-CI
 dPic = decoder(eKey, cPic);
 image(dPic);
+xlabel(['Deciphered image for L=',num2str(L),' and ',num2str(nombre_d_erreurs_a_inserer),' bit error insertions']);
+set(gca,'XTickLabel', [], 'YTickLabel', []);
 axis square;
 
 

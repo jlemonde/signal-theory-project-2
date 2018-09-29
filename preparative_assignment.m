@@ -45,7 +45,7 @@ rKey = filter(h, 1, key); % this line does the same as the comment before
 
 %%%%%%%%%%% RECONSTRUCTION DU SIGNAL : EQUALISER.
 % PARAMÈTRES
-L = 5; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
+L = 12; % il y aura L+1 paramètres w. Et on perd L valeurs parmi les N
 N = 32;
 % CONSTRUCTION DE LA MATRICE R
 R = zeros(N-L, L+1);

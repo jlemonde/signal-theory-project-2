@@ -14,7 +14,7 @@ load("training.mat");
 rKey = received;
 key = training;
 
-maxL = 31;
+maxL = 15;
 arrayMSE = zeros(maxL, 1);
 sumMSE = 0;
 for L = 1:maxL
@@ -59,7 +59,6 @@ sumMSE = sumMSE / maxL;
 plot(1:maxL, arrayMSE);
 ylabel("MSE, computed between L+1 and N");
 xlabel("Choice of the order L");
-
 
 return;
 
