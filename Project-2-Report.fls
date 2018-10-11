@@ -1,4 +1,4 @@
-PWD /home/jlemonde/EPFL/Échange 3e/KTH P1/Signal Theory/Project 2/signal-theory-project-2
+PWD /home/jlemonde/EPFL/KTH P1/Signal Theory/Project 2/signal-theory-project-2
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
@@ -80,6 +80,12 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/preprint/balance.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/preprint/balance.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -90,8 +96,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/footmisc/footmisc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/footmisc/footmisc.sty
 INPUT Project-2-Report.aux
@@ -123,12 +127,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-OUTPUT Project-2-Report.pdf
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
@@ -181,12 +179,18 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/omspcr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/omspcr.fd
+OUTPUT Project-2-Report.pdf
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
@@ -214,6 +218,8 @@ INPUT ./l16.png
 INPUT tse4.png
 INPUT ./tse4.png
 INPUT ./tse4.png
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT l12e2.png
 INPUT ./l12e2.png
 INPUT ./l12e2.png
@@ -223,8 +229,6 @@ INPUT ./l12e3.png
 INPUT l12e3-5.png
 INPUT ./l12e3-5.png
 INPUT ./l12e3-5.png
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT Project-2-Report.aux

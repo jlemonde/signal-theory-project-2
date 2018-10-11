@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.4.20)  29 SEP 2018 16:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.4.20)  11 OCT 2018 13:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -312,6 +312,27 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/preprint/balance.sty
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen143
@@ -329,10 +350,7 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-))
+)
 \Gin@req@height=\dimen144
 \Gin@req@width=\dimen145
 )
@@ -473,24 +491,17 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Missing character: There is no Ã in font ptmr7t!
-Missing character: There is no © in font ptmr7t!
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 4454) in paragraph at lines 30--30
+Underfull \hbox (badness 4454) in paragraph at lines 29--29
 [][]\OT1/ptm/m/n/9 Actually, the key is orig-i-nally com-posed by a se-quence
  []
 
@@ -505,116 +516,130 @@ File: omspcr.fd
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
- [2
+
+Underfull \hbox (badness 1472) in paragraph at lines 75--79
+[]\OT1/ptm/m/n/12 Notice also that this least-squares so-lu-tion for
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 75--79
+\OT1/ptm/m/n/12 the co-ef-fi-cients $\OML/cmm/b/it/12 w$ \OT1/ptm/m/n/12 is per
+ def-i-ni-tion the so-lu-tion
+ []
+
+
+Underfull \hbox (badness 2253) in paragraph at lines 75--79
+\OT1/ptm/m/n/12 which min-imises the mean square er-ror de-fined
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
 
 ]
-<l0.png, id=24, 395.97937pt x 401.24907pt>
+<l0.png, id=20, 395.97937pt x 401.24907pt>
 File: l0.png Graphic file (type png)
 <use l0.png>
-Package pdftex.def Info: l0.png  used on input line 84.
+Package pdftex.def Info: l0.png  used on input line 89.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
-<l3.png, id=25, 395.97937pt x 401.24907pt>
+<l3.png, id=21, 395.97937pt x 401.24907pt>
 File: l3.png Graphic file (type png)
 <use l3.png>
-Package pdftex.def Info: l3.png  used on input line 85.
+Package pdftex.def Info: l3.png  used on input line 90.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
-<l6.png, id=26, 395.97937pt x 401.24907pt>
+<l6.png, id=22, 395.97937pt x 401.24907pt>
 File: l6.png Graphic file (type png)
 <use l6.png>
-Package pdftex.def Info: l6.png  used on input line 86.
+Package pdftex.def Info: l6.png  used on input line 91.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
 
-Overfull \hbox (2.87122pt too wide) in paragraph at lines 84--87
+Overfull \hbox (2.87122pt too wide) in paragraph at lines 89--92
  [] [] [] 
  []
 
-<l12.png, id=27, 395.97937pt x 401.24907pt>
+<l12.png, id=23, 395.97937pt x 401.24907pt>
 File: l12.png Graphic file (type png)
 <use l12.png>
-Package pdftex.def Info: l12.png  used on input line 105.
+Package pdftex.def Info: l12.png  used on input line 110.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
-<l15.png, id=28, 395.97937pt x 401.24907pt>
+<l15.png, id=24, 395.97937pt x 401.24907pt>
 File: l15.png Graphic file (type png)
 <use l15.png>
-Package pdftex.def Info: l15.png  used on input line 106.
+Package pdftex.def Info: l15.png  used on input line 111.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
-<l16.png, id=29, 395.97937pt x 401.24907pt>
+<l16.png, id=25, 395.97937pt x 401.24907pt>
 File: l16.png Graphic file (type png)
 <use l16.png>
-Package pdftex.def Info: l16.png  used on input line 107.
+Package pdftex.def Info: l16.png  used on input line 112.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
 
-Overfull \hbox (2.87122pt too wide) in paragraph at lines 105--108
+Overfull \hbox (2.87122pt too wide) in paragraph at lines 110--113
  [] [] [] 
  []
 
+<tse4.png, id=26, 421.575pt x 316.18124pt>
+File: tse4.png Graphic file (type png)
+<use tse4.png>
+Package pdftex.def Info: tse4.png  used on input line 133.
+(pdftex.def)             Requested size: 212.0108pt x 159.0117pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \vbox (badness 2644) has occurred while \output is active []
-
-<tse4.png, id=30, 421.575pt x 316.18124pt>
-File: tse4.png Graphic file (type png)
-<use tse4.png>
-Package pdftex.def Info: tse4.png  used on input line 128.
-(pdftex.def)             Requested size: 212.0108pt x 159.0117pt.
-<l12e2.png, id=31, 395.97937pt x 401.24907pt>
+[2 <./l0.png> <./l3.png> <./l6.png> <./l12.png> <./l15.png> <./l16.png>]
+<l12e2.png, id=32, 395.97937pt x 401.24907pt>
 File: l12e2.png Graphic file (type png)
 <use l12e2.png>
-Package pdftex.def Info: l12e2.png  used on input line 144.
+Package pdftex.def Info: l12e2.png  used on input line 149.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
-<l12e3.png, id=32, 395.97937pt x 401.24907pt>
+<l12e3.png, id=33, 395.97937pt x 401.24907pt>
 File: l12e3.png Graphic file (type png)
 <use l12e3.png>
-Package pdftex.def Info: l12e3.png  used on input line 145.
+Package pdftex.def Info: l12e3.png  used on input line 150.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
-<l12e3-5.png, id=33, 395.97937pt x 401.24907pt>
+<l12e3-5.png, id=34, 395.97937pt x 401.24907pt>
 File: l12e3-5.png Graphic file (type png)
 <use l12e3-5.png>
-Package pdftex.def Info: l12e3-5.png  used on input line 146.
+Package pdftex.def Info: l12e3-5.png  used on input line 151.
 (pdftex.def)             Requested size: 87.4546pt x 88.61792pt.
 
-Overfull \hbox (2.87122pt too wide) in paragraph at lines 144--147
+Overfull \hbox (2.87122pt too wide) in paragraph at lines 149--152
  [] [] [] 
  []
 
-[3 <./l0.png> <./l3.png> <./l6.png> <./l12.png> <./l15.png> <./l16.png> <./tse4
-.png (PNG copy)>]
-Overfull \vbox (2.39838pt too high) has occurred while \output is active []
 
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
-[4 <./l12e2.png> <./l12e3.png> <./l12e3-5.png>] (./Project-2-Report.aux) ) 
+[3 <./tse4.png (PNG copy)> <./l12e2.png> <./l12e3.png> <./l12e3-5.png>]
+(./Project-2-Report.aux) ) 
 Here is how much of TeX's memory you used:
- 4562 strings out of 494174
- 67575 string characters out of 6158491
- 135340 words of memory out of 5000000
- 7832 multiletter control sequences out of 15000+600000
+ 5034 strings out of 494174
+ 72909 string characters out of 6158491
+ 146558 words of memory out of 5000000
+ 8297 multiletter control sequences out of 15000+600000
  45023 words of font info for 104 fonts, out of 8000000 for 9000
  398 hyphenation exceptions out of 8191
- 41i,10n,32p,796b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr
-/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
->
-Output written on Project-2-Report.pdf (4 pages, 910395 bytes).
+ 41i,10n,35p,1226b,260s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8
+r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on Project-2-Report.pdf (3 pages, 913627 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
